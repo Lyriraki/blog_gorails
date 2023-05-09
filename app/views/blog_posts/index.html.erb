@@ -1,0 +1,14 @@
+<h1>Blog Posts</h1>
+<% @blog_posts.each do |blog_post|  %>
+  <div>
+    <%#* Awalnya gini, (kurung-equal) karena kalau sintax biasa tidak bisa dicomment %>
+    <%#* <h2> (kurung-equal) link_to blog_post.title, "/blog_posts/#{blog_post.id}" </h2>%>
+    <%#* Setelah membuat alias di controller(as: :bla bla) %>
+    <%#* <h2> (kurung-equal) link_to blog_post.title, blog_post_path(blog_post.id) </h2>%>
+    <%#* Magic 1 => Tidak perlu pakai id %>
+    <%#* <h2> (kurung-equal) link_to blog_post.title, blog_post_path(blog_post) </h2>%>
+    <%#* Magic 2 => cukup pakai objectnya saja, Rails pinter %>
+    <h2> <%= link_to blog_post.title, blog_post %> </h2>
+    <p> <%= blog_post.body%> </p>
+  </div>
+<% end %>
