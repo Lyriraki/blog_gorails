@@ -9,6 +9,11 @@
     <%#* <h2> (kurung-equal) link_to blog_post.title, blog_post_path(blog_post) </h2>%>
     <%#* Magic 2 => cukup pakai objectnya saja, Rails pinter %>
     <h2> <%= link_to blog_post.title, blog_post %> </h2>
+    <% if blog_post.draft? %>
+      <div class="p-2 rounded bg-gray-100 text-gray-900">Draft</div>
+    <% elsif blog_post.scheduled? %>
+      <div class="p-2 rounded bg-blue-100 text-blue-900">Schedule</div>
+    <% end %>
     <p> <%= blog_post.body%> </p>
   </div>
 <% end %>
