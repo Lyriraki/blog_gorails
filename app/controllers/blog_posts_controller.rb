@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BlogPostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :set_blog_post, only: %i[show edit update destroy]
@@ -50,7 +51,7 @@ class BlogPostsController < ApplicationController
   private
 
   def blog_post_params
-    params.require(:blog_post).permit(:title, :body, :published_at)
+    params.require(:blog_post).permit(:title, :content, :published_at)
   end
 
   def set_blog_post
