@@ -11,3 +11,14 @@ user.update!(
   password: 'lyriraki21',
   password_confirmation: 'lyriraki21'
 )
+
+# * Untuk membuat 100 data sekaligus, hanya untuk uji coba pagination, Jadi cukup run sekali
+# 100.times do |i|
+#   BlogPost.create title: "Blog Post #{i}", content: "Hello World My Man", published_at: Time.current
+# end
+
+# * Sama dengan coding di atas, hanya saja, ini tidak membuat data baru, dan hanya mereset data yang sudah ada. Jadi data tetap akan berjumlah 100
+100.times do |i|
+  blog_post = BlogPost.where(title: "Blog Post #{i}").first_or_initialize
+  blog_post.update(content: "Hello World My Man", published_at: Time.current)
+end

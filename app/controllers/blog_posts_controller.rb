@@ -5,7 +5,8 @@ class BlogPostsController < ApplicationController
   # bisa juga pakai except(kecuali): [:index, :new, :create]
 
   def index
-    @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
+    @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published
+    @pagy, @blog_posts = pagy(@blog_posts)
   end
 
   def show
