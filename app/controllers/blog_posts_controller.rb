@@ -7,6 +7,12 @@ class BlogPostsController < ApplicationController
   def index
     @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published
     @pagy, @blog_posts = pagy(@blog_posts)
+  rescue Pagy::OverflowError
+    # * Opsi pertama, mengembalikan page=over ke halaman 1, ramah SEO
+    redirect_to root_path(page: 1)
+    # * Opsi kedua, mengembalikan page=over ke halaman 1 TAPI tetep menggunakan url ngawur tadi. misal 100 menjadi 101 tapi datanya data halam ke 1, kelemahannya tidak ramah SEO
+    # params[:page] = 1
+    # retry
   end
 
   def show
