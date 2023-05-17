@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   # * as: :alias ini adalah alias untuk mempersingkat "to: "blablabla" "
   # ! Route dengan parameter :id harus di paling bawah
   # * MAGIC, cukup gunakan code di bawah untuk meringkas banyak route di atas
-  resources :blog_posts
+  resources :blog_posts do
+    # TODO: Intinya Pahami kode di bawah
+    resource :cover_image, only: [:destroy], module: :blog_posts
+  end
 
   # Defines the root path route ("/")
   root 'blog_posts#index'

@@ -58,7 +58,9 @@ class BlogPostsController < ApplicationController
   private
 
   def blog_post_params
-    params.require(:blog_post).permit(:title, :content, :published_at)
+    # * Ada alasan Khusus kenapa ada :content dan :cover_image
+    # TODO: Pelajari lagi saja
+    params.require(:blog_post).permit(:title, :content, :cover_image, :published_at)
   end
 
   def set_blog_post

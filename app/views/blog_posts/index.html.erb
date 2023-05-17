@@ -1,6 +1,7 @@
 <h1>Blog Posts</h1>
 <% @blog_posts.each do |blog_post|  %>
   <div>
+    <%= image_tag blog_post.cover_image if blog_post.cover_image.present? %>
     <%#* Awalnya gini, (kurung-equal) karena kalau sintax biasa tidak bisa dicomment %>
     <%#* <h2> (kurung-equal) link_to blog_post.title, "/blog_posts/#{blog_post.id}" </h2>%>
     <%#* Setelah membuat alias di controller(as: :bla bla) %>
